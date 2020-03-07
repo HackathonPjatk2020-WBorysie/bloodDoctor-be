@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require('./src/db/mongoose');
 
+const bloodTest = require('./src/controllers/bloodTest');
+
 const app = express();
 
 const indexRouter = require('./src/controllers');
@@ -21,6 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/bloodTest', bloodTest);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
